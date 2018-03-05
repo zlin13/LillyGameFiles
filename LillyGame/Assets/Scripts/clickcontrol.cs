@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class clickcontrol : MonoBehaviour {
-
     public static string nameofobj;
     public GameObject objnametext;
-    public Transform successclick;
-
+    public Transform objnametextPos;
+    public Transform sucessclick;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,15 +16,13 @@ public class clickcontrol : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    void OnMouseDown()
+    private void OnMouseDown()
     {
         nameofobj = gameObject.name;
-        /* for debugging porposes
-          Debug.Log(nameofobj); */
+        //Debug.Log(nameofobj);
         Destroy(gameObject);
         Destroy(objnametext);
-        //Particle effect where text used to be
-        Instantiate(successclick, objnametext.transform.position, successclick.rotation);
+        trackingclicks.totalclicks = 0;
+        Instantiate(sucessclick, objnametextPos.position, sucessclick.rotation);
     }
 }
